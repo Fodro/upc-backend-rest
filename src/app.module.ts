@@ -2,11 +2,12 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Link } from 'src/models/link.model'
-require('dotenv').config();
+import { Link } from 'src/models/link.entity';
+import { config } from 'dotenv';
 
+config();
 @Module({
-  imports: [
+	imports: [
 	  TypeOrmModule.forRoot({
 			type: 'postgres',
 			host: process.env.POSTGRES_HOST,
@@ -14,14 +15,13 @@ require('dotenv').config();
 			database: process.env.POSTGRES_DATABASE,
 			username: process.env.POSTGRES_USERNAME,
 			password: process.env.POSTGRES_PASSWORD,
-			logging: true,
 			synchronize: true,
 			entities: [
-				Link
+				Link,
 			],
-	  })
-  ],
-  controllers: [AppController],
-  providers: [AppService],
+	  }),
+	],
+	controllers: [AppController],
+	providers: [AppService],
 })
 export class AppModule {}
