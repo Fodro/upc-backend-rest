@@ -33,7 +33,7 @@ $ npm install
 ```
 
 ## Running the app
-
+Для успешного запуска необходимо поднять PostgreSQL и выставить необходимые настройки для подключения в .env файл
 ```bash
 # development
 $ npm run start
